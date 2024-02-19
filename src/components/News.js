@@ -14,7 +14,7 @@ export class News extends Component {
     pageSize: PropTypes.number,
     category: PropTypes.string,
   }
-  
+
 constructor() {
     super();
     console.log("Hello I am a constructor from News component");
@@ -25,7 +25,7 @@ constructor() {
     }
   }
   async componentDidMount(){
-    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&apiKey=fba1a30dec284837bc8df4de70c85b3d&pageSize=${this.props.pageSize}`;
+    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=fba1a30dec284837bc8df4de70c85b3d&pageSize=${this.props.pageSize}`;
     let data = await fetch(url);
     let parsedData = await data.json()
     console.log(parsedData);
@@ -33,7 +33,7 @@ constructor() {
   }
 
 handlePrevious = async () => {
-  let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&apiKey=fba1a30dec284837bc8df4de70c85b3d&page=${this.state.page - 1}&pageSize=${this.props.pageSize}`;
+  let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=fba1a30dec284837bc8df4de70c85b3d&page=${this.state.page - 1}&pageSize=${this.props.pageSize}`;
   this.setState({loading: true})
   let data = await fetch(url);
   let parsedData = await data.json()
@@ -46,7 +46,7 @@ handlePrevious = async () => {
 
   handleNext = async () => {
 
-    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&apiKey=fba1a30dec284837bc8df4de70c85b3d&page=${this.state.page + 1}&pageSize=${this.props.pageSize}`;
+    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=fba1a30dec284837bc8df4de70c85b3d&page=${this.state.page + 1}&pageSize=${this.props.pageSize}`;
     this.setState({loading: true})
     let data = await fetch(url);
     let parsedData = await data.json()
