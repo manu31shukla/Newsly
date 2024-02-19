@@ -1,3 +1,5 @@
-.App-container{
+body {
     background-color: #e3f2fd;
-    }
+    margin: 0;
+    padding: 0;
+  }
