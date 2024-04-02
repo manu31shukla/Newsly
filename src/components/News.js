@@ -65,7 +65,8 @@ handlePrevious = async () => {
         <div className="row">
           {!this.state.loading && this.state.articles.map((element)=>{
             return <div className="col-md-4"  key={element.url} >
-            <NewsItem title={element.title?element.title:""} description={element.description?element.description:""} imageUrl={element.urlToImage} newsUrl={element.url}/>
+            <NewsItem title={element.title?element.title:""} description={element.description?element.description:""} imageUrl={element.urlToImage} newsUrl={element.url}
+            author={element.author? element.author : "Unknown"} date={element.publishedAt}/>
             </div>
           })}      
         </div>
