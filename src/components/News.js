@@ -24,37 +24,29 @@ constructor() {
       page: 1,
     }
   }
-  async componentDidMount(){
-    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=fba1a30dec284837bc8df4de70c85b3d&pageSize=${this.props.pageSize}`;
+
+  async updateNews(pageNo){
+    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=fba1a30dec284837bc8df4de70c85b3d&page=${this.state.page}&pageSize=${this.props.pageSize}`;
+    this.setState({loading: true})
     let data = await fetch(url);
     let parsedData = await data.json()
     console.log(parsedData);
-    this.setState({ articles: parsedData.articles, totalArticles: parsedData.totalResults }) 
+    this.setState({ articles: parsedData.articles, totalArticles: parsedData.totalResults, loading: false}) 
+  }
+
+  async componentDidMount(){
+    this.updateNews();
   }
 
 handlePrevious = async () => {
-  let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=fba1a30dec284837bc8df4de70c85b3d&page=${this.state.page - 1}&pageSize=${this.props.pageSize}`;
-  this.setState({loading: true})
-  let data = await fetch(url);
-  let parsedData = await data.json()
-  this.setState({
-    articles: parsedData.articles,
-    page: this.state.page - 1, 
-    loading: false}) 
+  this.setState({page: this.state.page - 1});
+  this.updateNews();
   }
 
 
   handleNext = async () => {
-
-    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=fba1a30dec284837bc8df4de70c85b3d&page=${this.state.page + 1}&pageSize=${this.props.pageSize}`;
-    this.setState({loading: true})
-    let data = await fetch(url);
-    let parsedData = await data.json()
-    this.setState({
-      articles: parsedData.articles,
-      page: this.state.page + 1,
-      loading: false})
-    
+      this.setState({page: this.state.page + 1});
+      this.updateNews();
   }
 
   render() {
