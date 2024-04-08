@@ -15,14 +15,15 @@ export class News extends Component {
     category: PropTypes.string,
   }
 
-constructor() {
-    super();
+constructor(props) {
+    super(props);
     console.log("Hello I am a constructor from News component");
     this.state = {
       articles: [],
       loading: false,
       page: 1,
     }
+    document.title= this.props.category.charAt(0).toUpperCase() + this.props.category.slice(1) + " - Newsly";
   }
 
   async updateNews(pageNo){
@@ -49,15 +50,23 @@ handlePrevious = async () => {
       this.updateNews();
   }
 
+  truncateDescription = (text, maxLength) => {
+    if (text.length > maxLength) {
+      return text.substring(0, maxLength) + '...';
+    } else {
+      return text;
+    }
+  };
+
   render() {
     return (
       <div className='container my-3'>
-        <h1 className="text-center">Newsly - Top Headlines</h1>
+        <h1 className="text-center">Newsly - Top {this.props.category.charAt(0).toUpperCase() + this.props.category.slice(1)} Headlines</h1>
         {this.state.loading && <Loader/>}
         <div className="row">
           {!this.state.loading && this.state.articles.map((element)=>{
             return <div className="col-md-4"  key={element.url} >
-            <NewsItem title={element.title?element.title:""} description={element.description?element.description:""} imageUrl={element.urlToImage} newsUrl={element.url}
+            <NewsItem title={element.title?element.title:""} description={this.truncateDescription(element.description || '', 150)} imageUrl={element.urlToImage} newsUrl={element.url}
             author={element.author? element.author : "Unknown"} date={element.publishedAt} source={element.source.name}/>
             </div>
           })}      
