@@ -30,7 +30,7 @@ constructor(props) {
 
   async updateNews(pageNo){
     this.props.setProgress(0);
-    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=fba1a30dec284837bc8df4de70c85b3d&page=${this.state.page}&pageSize=${this.props.pageSize}`;
+    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${this.state.page}&pageSize=${this.props.pageSize}`;
     this.setState({loading: true})
     let data = await fetch(url);
     let parsedData = await data.json()
@@ -58,7 +58,7 @@ constructor(props) {
       this.setState({
         page: this.state.page + 1
       });
-    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=fba1a30dec284837bc8df4de70c85b3d&page=${this.state.page}&pageSize=${this.props.pageSize}`;
+    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${this.state.page}&pageSize=${this.props.pageSize}`;
     let data = await fetch(url);
     let parsedData = await data.json()
     this.setState({ 
@@ -79,7 +79,7 @@ constructor(props) {
   render() {
     return (
       <>
-        <h1 className="text-center">Newsly - Top {this.props.category.charAt(0).toUpperCase() + this.props.category.slice(1)} Headlines</h1>
+        <h2 className="text-center my-3">Newsly - Top {this.props.category.charAt(0).toUpperCase() + this.props.category.slice(1)} Headlines</h2>
         {this.state.loading && <Loader/>}
         <InfiniteScroll
           dataLength={this.state.articles.length} 
