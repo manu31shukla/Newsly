@@ -25,7 +25,8 @@ Newsly is a React-based web application that allows users to browse news article
   <source src="src/assets/Recording 2024-04-09 105956.mp4" type="video/mp4">
 </video>
 
-![Newsly Screenshot](src/assets/Recording%202024-04-09%20105956.mp4)
+
+https://github.com/manu31shukla/Newsly/assets/82714021/a88e3eeb-5617-4d6b-89f8-10f7e8ad9141
 
 ![Newsly Screenshot](src/assets/Screenshot%202024-04-09%20105821.png)
 
