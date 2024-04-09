@@ -79,7 +79,7 @@ constructor(props) {
   render() {
     return (
       <>
-        <h2 className="text-center my-3">Newsly - Top {this.props.category.charAt(0).toUpperCase() + this.props.category.slice(1)} Headlines</h2>
+        <h2 className="text-center" style={{marginTop: '100px'}}>Newsly - Top {this.props.category.charAt(0).toUpperCase() + this.props.category.slice(1)} Headlines</h2>
         {this.state.loading && <Loader/>}
         <InfiniteScroll
           dataLength={this.state.articles.length} 
