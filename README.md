@@ -21,6 +21,10 @@ Newsly is a React-based web application that allows users to browse news article
 - Infinite Scroll Component (e.g., react-infinite-scroll-component)
 
 ## Snapshots of project
+<video width="320" height="240" controls>
+  <source src="src/assets/Recording 2024-04-09 105956.mp4" type="video/mp4">
+</video>
+
 ![Newsly Screenshot](src/assets/Recording%202024-04-09%20105956.mp4)
 
 ![Newsly Screenshot](src/assets/Screenshot%202024-04-09%20105821.png)
